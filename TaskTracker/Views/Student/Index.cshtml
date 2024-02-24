@@ -1,0 +1,37 @@
+﻿@model List<Student>
+
+
+
+<div class=" container-fluid d-flex justify-content-between">
+    <h1 class="d-inline me-auto">Students</h1>
+    <a class="bg-primary text-light rounded-3 border-0 mb-2" asp-action="Add">add student</a>
+</div>
+<table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Group</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Email</td>
+                <td>@student.Phone</td>
+                <td>@student.GroupId</td>
+                <td>
+                    <a class="bg-warning p-2 rounded-3 text-decoration-none" asp-action="Edit" asp-route-id="@student.Id">edit</a>
+                    <a class="bg-danger text-light p-2 rounded-3 text-decoration-none" asp-action="Delete" asp-route-id="@student.Id">delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+  
+

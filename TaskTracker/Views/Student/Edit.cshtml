@@ -1,0 +1,20 @@
+﻿@model Student
+
+<h1>Edit Student</h1>
+<div class="container border w-auto">
+    <form method="post" class="d-flex flex-column">
+    <label>student name</label>
+        <input type="text" asp-for="Name" class="form-control w-50" />
+
+    <label>email</label>
+        <input type="text" asp-for="Email" class="form-control w-50" />
+
+    <label>phone number</label>
+        <input type="text" asp-for="Phone" class="form-control w-50" />
+
+    <label>Group</label>
+        <input type="text" asp-for="GroupId" class="form-control w-50" />
+
+    <button type="submit" class="bg-primary w-50 border-0 my-2 text-light ">Edit</button>
+
+</form>

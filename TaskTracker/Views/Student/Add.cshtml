@@ -1,0 +1,22 @@
+﻿@model Student
+
+<h1>Add Student</h1>
+<div class="container border-1">
+<form method="post" class="d-flex flex-column">
+    <label>student name</label>
+        <input type="text" asp-for="Name" class="form-control w-50" />
+
+    <label>email</label>
+        <input type="text" asp-for="Email" class="form-control w-50" />
+
+    <label>phone number</label>
+        <input type="text" asp-for="Phone" class="form-control w-50" />
+
+    <label>Group</label>
+        <input type="text" asp-for="GroupId" class="form-control w-50" />
+
+    <button type="submit" class="bg-primary mt-2 w-50 border-0 text-light">Add</button>
+
+
+</form>
+</div>
