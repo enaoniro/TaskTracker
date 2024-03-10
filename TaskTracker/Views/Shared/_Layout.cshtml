@@ -3,50 +3,80 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TaskTracker</title>
+    <title>@ViewData["Title"] - GoalTracker</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/TaskTracker.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GoalTracker.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-gradient bg-success text-light  border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TaskTracker</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Student" asp-action="Index">Students</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class="mb-0">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - TaskTracker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
+   
+     <div class="row mx-0 ">
+
+
+
+                <div class="col-1 vh-100 d-flex flex-column m-0 p-0 text-secondary pt-5 align-items-center bg-black bg-opacity-75 position-fixed">
+
+                    <ul class="h-50 mt-3 text-start mt-5 px-0">
+                    <li class="list-unstyled h-25 nav-item">
+                                <a class="nav-link text-decoration-none fs-5 " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                    <li class="list-unstyled h-25 nav-item ">
+                        <a class="nav-link text-decoration-none fs-5 active " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                    <li class="list-unstyled h-25 nav-item">
+                        <a class="nav-link text-decoration-none fs-5 active " asp-area="" asp-controller="Student" asp-action="Index">Students</a>
+                            </li>
+                   
+                    <li class="list-unstyled h-25 nav-item">
+                        <a class="nav-link text-decoration-none fs-5 active" asp-area="" asp-controller="Goal" asp-action="Index">Goals</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gooals
+                        </a>
+                            <ul class="dropdown-menu" >
+                            <li class="nav-item" >
+                                <a class="nav-link dropdown-item text-dark " asp-area="" asp-controller="Goal" asp-action="Index">Open Tasks</a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link dropdown-item text-dark " asp-area="" asp-controller="Goal" asp-action="CompletedTasks">Completed Tasks</a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link dropdown-item text-dark " asp-area="" asp-controller="Goal" asp-action="SuccessedTasks">Successed Tasks</a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link dropdown-item text-dark " asp-area="" asp-controller="Goal" asp-action="FailedTasks">Failed Tasks</a>
+                            </li>
+
+                            </ul>
+                    </li>
+                </ul>
+                </div>  
+   
+                <div class="col-10 container d-flex flex-column main-container">        
+                    <main role="main" class="pb-3 w-80 d-flex flex-column justify-content-center m-5 rounded-top ">
+                    @RenderBody()
+                    </main>
+                </div>
+          
+     </div>
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.datatables.net/2.0.1/js/dataTables.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

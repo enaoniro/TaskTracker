@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TaskTracker.Models;
+using GoalTracker.Models;
 
 namespace TaskTracker.Controllers
 {

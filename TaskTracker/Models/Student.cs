@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace TaskTracker.Models
+namespace GoalTracker.Models
 {
     public class Student
     {
@@ -16,5 +17,8 @@ namespace TaskTracker.Models
         [Required]
         [ForeignKey("GroupId")]
        public int GroupId { get; set; }
+
+        [ValidateNever]
+        public string? ImageUrl { get; set; }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model Goal
+
+
+<div class="container border-1">
+    <h1 class="">Delete Goal</h1>
+    <form method="post" class="d-flex flex-column">
+        <label>goal</label>
+        <input type="text" asp-for="Name" class="form-control w-50" />
+
+        <label>Target</label>
+        <input type="text" asp-for="Target" class="form-control w-50" />
+
+        <label>Record</label>
+        <input type="text" asp-for="Record" class="form-control w-50" />
+
+        <label>Student</label>
+        <input type="text" asp-for="StudentId" class="form-control w-50" />
+
+        <label>assignment date</label>
+        <input type="datetime" asp-for="AssignmentDate" class="form-control w-50">
+            @Html.TextBoxFor(model => model.AssignmentDate, new { type = "date" })
+        </input>
+
+        <label>Deadline</label>
+        <input type="datetime" asp-for="AssignmentDate" class="form-control w-50">
+        @Html.TextBoxFor(model => model.Deadline, new { type = "date" })
+        </input>
+
+        <button type="submit" class="bg-danger mt-2 w-50 border-0 text-light">Delete</button>
+
+
+    </form>
+</div>

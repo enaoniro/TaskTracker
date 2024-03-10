@@ -4,6 +4,7 @@ using GoalTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoalTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240225214951_AddNewGoalTodB")]
+    partial class AddNewGoalTodB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,6 @@ namespace GoalTracker.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("Deadline")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsCompleted")
@@ -64,8 +66,8 @@ namespace GoalTracker.Migrations
                         new
                         {
                             Id = 3,
-                            AssignmentDate = new DateTime(2024, 2, 27, 21, 47, 23, 140, DateTimeKind.Local).AddTicks(9925),
-                            Deadline = new DateTime(2024, 2, 27, 21, 47, 23, 140, DateTimeKind.Local).AddTicks(9973),
+                            AssignmentDate = new DateTime(2024, 2, 25, 22, 49, 51, 296, DateTimeKind.Local).AddTicks(4075),
+                            Deadline = new DateTime(2024, 2, 25, 22, 49, 51, 296, DateTimeKind.Local).AddTicks(4119),
                             IsCompleted = false,
                             Name = "reading",
                             Record = 0,
@@ -75,7 +77,7 @@ namespace GoalTracker.Migrations
                         new
                         {
                             Id = 4,
-                            AssignmentDate = new DateTime(2024, 2, 27, 21, 47, 23, 140, DateTimeKind.Local).AddTicks(9976),
+                            AssignmentDate = new DateTime(2024, 2, 25, 22, 49, 51, 296, DateTimeKind.Local).AddTicks(4123),
                             Deadline = new DateTime(2024, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsCompleted = false,
                             Name = "writing",
@@ -99,9 +101,6 @@ namespace GoalTracker.Migrations
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -1,0 +1,44 @@
+﻿@model Goal
+
+<h1>Edit Goal</h1>
+<div class="container border-1">
+    <form method="post" class="d-flex flex-column">
+
+        <label>goal</label>
+        <span asp-validation-for="Name" class="text-danger"></span><br />
+        <input type="text" asp-for="Name" class="form-control w-50" />
+
+        <label>Target</label>
+        <span asp-validation-for="Target" class="text-danger"></span><br />
+        <input type="text" asp-for="Target" class="form-control w-50" />
+
+        <label>Record</label>
+        <span asp-validation-for="Record" class="text-danger"></span><br />
+        <input type="text" asp-for="Record" class="form-control w-50" />
+
+        <label>Student</label>
+        <span asp-validation-for="StudentId" class="text-danger"></span><br />
+        <input type="text" asp-for="StudentId" class="form-control w-50" />
+
+        <label>assignment date</label>
+        <span asp-validation-for="AssignmentDate" class="text-danger"></span><br />
+        <input type="date" asp-for="AssignmentDate" class="form-control w-50"/>
+      
+
+        <label>Deadline</label>
+        <span asp-validation-for="Deadline" class="text-danger"></span><br />
+        <input type="date" asp-for="Deadline" class="form-control w-50"/>
+    
+
+        <button type="submit" class="bg-primary mt-2 w-50 border-0 text-light">Edit</button>
+
+
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

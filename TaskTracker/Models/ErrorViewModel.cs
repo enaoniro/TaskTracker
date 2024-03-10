@@ -1,4 +1,4 @@
-namespace TaskTracker.Models
+namespace GoalTracker.Models
 {
     public class ErrorViewModel
     {

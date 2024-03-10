@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace TaskTracker.Migrations
+namespace GoalTracker.Migrations
 {
     /// <inheritdoc />
     public partial class FirstMigrationToDb : Migration

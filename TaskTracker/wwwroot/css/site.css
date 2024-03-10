@@ -20,3 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.main-container {
+/*    background-color:whitesmoke;*/
+}
+
+.dashboard {
+    background-color:white;
+}
+
+.nav-link {
+    color:floralwhite; 
+    text-decoration: none; /* Remove underline */
+}
+
+.goal-list {
+    background-color: whitesmoke;
+}
+    /* Define the link style when it's visited */
+    /*.nav-link:visited {
+        color: red;*/ /* Change color when visited */
+    /*}*/

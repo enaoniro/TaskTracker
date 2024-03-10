@@ -2,36 +2,101 @@
 
 
 
-<div class=" container-fluid d-flex justify-content-between">
+<div class=" container-fluid d-flex justify-content-between p-1 ">
     <h1 class="d-inline me-auto">Students</h1>
-    <a class="bg-primary text-light rounded-3 border-0 mb-2" asp-action="Add">add student</a>
+    <a class="bg-primary text-light rounded-3 border-0 mb-2 p-2 text-decoration-none" asp-action="Add">add student</a>
 </div>
-<table class="table table-bordered table-striped">
+<table id="myTable" class="table table-bordered table-striped p-3 display w-80% ">
         <thead>
             <tr>
+                
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Group</th>
-                <th></th>
+            <th>Actions</th>
+                
             </tr>
         </thead>
-        <tbody>
 
+        <tbody>
         @foreach (var student in Model)
-        {
+    {
             <tr>
+                
                 <td>@student.Name</td>
                 <td>@student.Email</td>
                 <td>@student.Phone</td>
                 <td>@student.GroupId</td>
-                <td>
-                    <a class="bg-warning p-2 rounded-3 text-decoration-none" asp-action="Edit" asp-route-id="@student.Id">edit</a>
-                    <a class="bg-danger text-light p-2 rounded-3 text-decoration-none" asp-action="Delete" asp-route-id="@student.Id">delete</a>
-                </td>
-            </tr>
-        }
+                
+                
+            @*     <td>
+                    <a asp-action="edit" asp-route-id="@student.Id">edit</a>
+                    <a asp-action="delete" asp-route-id="@student.Id">delete</a>
+                    
+                </td>  *@
+            </tr> 
+    }
         </tbody>
-    </table>
   
+      
+  
+   
+  
+    </table>
 
+
+<div class="row pb-3 mt-5">
+    @foreach (var student in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow  border-top border-5 rounded">
+
+                        <img src="@student.ImageUrl" class="card-img-top rounded" />
+
+
+                        <div class="card-body pb-0">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@student.Name</p>
+                                <p class="card-title text-warning text-center"> <b>@student.Email</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center mb-0">
+                                    Phone Number:
+                                    <span class="">
+                                        @student.Phone
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center">
+                                    Group no:
+                                    <span>
+                                        @student.GroupId
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Details"
+                               asp-route-Id="@student.Id"
+                               class="btn btn-secondary text-light bg-gradient border-0 form-control">
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+    <script src="~/js/student.js"></script>
+}
+  
+   

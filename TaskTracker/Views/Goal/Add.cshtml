@@ -1,0 +1,45 @@
+﻿@model GoalTracker.Models.ViewModels.GoalVM
+
+<h1>Add Goal</h1>
+<div class="container border-1">
+    <form method="post" class="d-flex flex-column">
+
+        <span asp-validation-for="Goal.Name" class="text-danger"></span><br />
+        <label>goal</label>
+        <input type="text" asp-for="Goal.Name" class="form-control w-50" />
+
+        <span asp-validation-for="Goal.Target" class="text-danger"></span><br />
+        <label>Target</label>
+        <input type="text" asp-for="Goal.Target" class="form-control w-50" />
+
+        <span asp-validation-for="Goal.Record" class="text-danger"></span><br />
+        <label>Record</label>
+        <input type="text" asp-for="Goal.Record" class="form-control w-50" />
+
+        <span asp-validation-for="Goal.StudentId" class="text-danger"></span><br />
+        <label>Student</label>
+        <select asp-for="Goal.StudentId" asp-items="@Model.StudentList">
+            <option disabled selected>--select student</option>
+
+        </select>
+
+        <span asp-validation-for="Goal.AssignmentDate" class="text-danger"></span><br />
+        <label>assignment date</label>
+        @Html.TextBoxFor(model => model.Goal.AssignmentDate, new { type = "date" })
+
+        <span asp-validation-for="Goal.Deadline" class="text-danger"></span><br />
+        <label>Deadline</label>
+        @Html.TextBoxFor(model => model.Goal.Deadline, new { type = "date" })
+
+        <button type="submit" class="bg-primary mt-2 w-50 border-0 text-light">Add</button>
+
+
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

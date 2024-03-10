@@ -1,0 +1,111 @@
+﻿@model List<Goal>
+
+@{
+    var goalWithStudent = Model.GroupBy(s => s.StudentId);
+}
+
+<div class="container-fluid d-flex flex-column justify-content-between p-1 bg-secondary bg-opacity-25 p-3 ">
+    <div class="d-flex justify-content-between">
+        <h1 class="d-inline mx-3">Student Tasks</h1>
+        <a class="bg-primary text-light rounded-3 border-0 m-2 px-5 pt-2 text-decoration-none" asp-controller="Goal" asp-action="Add">add task</a>
+    </div>
+    @foreach (var group in goalWithStudent)
+    {
+        <table id="GoalTable" class="table table-bordered p-3 bg-light table-hover table-responsive">
+            <thead class=" ">
+
+                <tr class="border-bottom border-2">
+
+                    <th class="bg-primary text-light bg-opacity-50 text-center">Student Name</th>
+                    <th class="text-center">no</th>
+                    <th class="text-center">Task</th>
+                    <th class="text-center">Target</th>
+                    <th class="text-center">Record</th>
+                    <th class="text-center">Assignment Date</th>
+                    <th class="text-center">Deadline</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var goal in group)
+                {
+                    <tr data-id="@goal.Id">
+
+                        <td class="fw-bold text-center">@goal.Student.Name.ToUpper()</td>
+                        <td class="fw-bold text-center">@(@Model.IndexOf(goal) + 1) </td>
+                        <td class="text-center">@goal.Name</td>
+                        <td class="text-center">@goal.Target</td>
+                        <td class="@(goal.Record > goal.Target ? "text-success fw-bold":"bg-danger fw-bold bg-opacity-25") text-center">@goal.Record</td>
+                        <td class="text-center">@goal.AssignmentDate</td>
+                        <td class="fw-bold text-center">@goal.Deadline</td>
+
+
+                        <td class="@(DateTime.Now > @goal.Deadline && @goal.Record > goal.Target ? "bg-success bg-opacity-50" :
+                             DateTime.Now > @goal.Deadline && @goal.Record < goal.Target ?  "bg-danger bg-opacity-25": "")) bg-opacity-25 text-center fw-bold">
+                            @(DateTime.Now > @goal.Deadline && goal.Record > goal.Target ? "SUCCESS" : DateTime.Now > @goal.Deadline && goal.Record < goal.Target ? "FAILURE" : "OPEN")
+                        </td>
+
+
+
+                        @if (DateTime.Now < @goal.Deadline)
+                        {
+                            <td class="d-flex justify-content-center text-center p-0">
+                                <button class="btn btn-warning w-50 me-1"><a class="text-decoration-none " asp-controller="Goal" asp-action="edit" asp-route-id="@goal.Id">edit</a></button>
+                                <button class="btn btn-danger  w-50"><a class="text-decoration-none text-light" asp-controller="Goal" asp-action="delete" asp-route-id="@goal.Id">delete</a></button>
+                            </td>
+                        }
+                        else
+                        {
+                            if (!@goal.IsCompleted)
+                            {
+                                <td class="text-center bg-opacity-25 text-muted p-1">
+                                    @*  <span class="text-danger text-muted">CLOSED</span> *@
+                                    <button class="btn btn-outline-danger w-100" id="updateButton" data-id="@goal.Id">
+                                        Mark Task as Completed
+                                    </button>
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center text-danger fw-bold">COMPLETED</td>
+                            }
+                        }
+
+
+
+                    </tr>
+                }
+
+            </tbody>
+
+
+
+        </table>
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#updateButton').click(function () {
+                var entityId = $(this).data('id');
+                $.ajax({
+                    url: '@Url.Action("CompleteTask", "Goal")',
+                    type: 'POST',
+                    data: { id: entityId },
+                    success: function () {
+                        alert('Property updated successfully.');
+                        // Optionally, you can update the UI here
+                    },
+                    error: function () {
+                        alert('An error occurred while updating the property.');
+                    }
+                });
+            });
+        });
+    </script>
+}
